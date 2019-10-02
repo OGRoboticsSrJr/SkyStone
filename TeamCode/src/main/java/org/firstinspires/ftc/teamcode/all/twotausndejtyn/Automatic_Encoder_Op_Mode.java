@@ -62,10 +62,8 @@ public class Automatic_Encoder_Op_Mode extends LinearOpMode {
         rightDrive.setTargetPosition(2240);
 
         while (leftDrive.isBusy() && opModeIsActive()) {
-
         }
         while (rightDrive.isBusy() && opModeIsActive()) {
-
         }
 
         leftDrive.setPower(0);
