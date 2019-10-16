@@ -23,7 +23,7 @@ public class Auto_OP_Mode extends LinearOpMode {
     static final double reduction = 0.025;
     static final double diameter = 3.54331;
     static final double CPI = (CPMR*reduction)/(diameter*3.14159265363);
-    static final double speed = 3.0;
+    static final double speed = -3.0;
     static final double turn = 0.5;
 
     ColorSensor coloursensor;
@@ -54,16 +54,16 @@ public class Auto_OP_Mode extends LinearOpMode {
                 motoleftback.getCurrentPosition(),
                 motoleftfront.getCurrentPosition(),
                 motorightfront.getCurrentPosition(),
-                motorightback.getCurrentPosition();
+                motorightback.getCurrentPosition());
         telemetry.update();
 
 
         waitForStart();
 
-        motoleftfront.setPower(-speed);
-        motorightback.setPower(-speed);
-        motorightfront.setPower(-speed);
-        motoleftback.setPower(-speed);
+        motoleftfront.setPower(speed);
+        motorightback.setPower(speed);
+        motorightfront.setPower(speed);
+        motoleftback.setPower(speed);
 
 
 
