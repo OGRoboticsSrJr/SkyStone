@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Basic: Iterative OpMode", group="Iterative Opmode")
+@TeleOp
 //@Disabled
 public class TeamCode extends OpMode
 {
@@ -68,6 +68,5 @@ public class TeamCode extends OpMode
     @Override
     public void stop() {
     }
-
 }
 

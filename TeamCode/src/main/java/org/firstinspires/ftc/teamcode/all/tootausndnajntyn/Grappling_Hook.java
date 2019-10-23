@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
-@Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
+@Autonomous
 public class Grappling_Hook extends LinearOpMode{
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -17,13 +17,15 @@ public class Grappling_Hook extends LinearOpMode{
     @Override
     public void runOpMode(){
 
-        Servo = hardwareMap.get(Servo.class, "Servo");
-        telemetry.addData("Status", "Initializes");
+        Servo = hardwareMap.get(Servo.class, "servo1");
+        telemetry.addData("Status", "Initialized");
         telemetry.update();
+        Servo.setPosition(0);
 
         waitForStart();
 
-        Servo.setPosition(0);
-        Servo.setPosition(0.5);
+        Servo.setPosition(1);
+
+        sleep(1000);
     }
 }
