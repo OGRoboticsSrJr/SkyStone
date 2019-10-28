@@ -14,9 +14,9 @@ public class Automatic_Encoder_Op_Mode extends LinearOpMode {
     private DcMotor rightDrive = null;
     private DcMotor leftDrive = null;
 
-    static final double COUNTS_PER_MOTOR_REV = 2240;    // eg: TETRIX Motor Encoder
+    static final double COUNTS_PER_MOTOR_REV = 2240;     // eg: TETRIX Motor Encoder
     static final double DRIVE_GEAR_REDUCTION = 1.0;     // This is < 1.0 if geared UP
-    static final double WHEEL_DIAMETER_INCHES = 3.54;     // For figuring circumference
+    static final double WHEEL_DIAMETER_INCHES = 3.54;  // For figuring circumference
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.14159265363);
     static final double DRIVE_SPEED = 2.0;
