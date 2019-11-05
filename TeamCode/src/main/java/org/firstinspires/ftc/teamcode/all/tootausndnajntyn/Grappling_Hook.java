@@ -10,21 +10,25 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Grappling_Hook extends LinearOpMode{
 
     private ElapsedTime runtime = new ElapsedTime();
-    private Servo Servo = null;
-    static final double speed = 1.0;
-
+    private Servo Servo1 = null;
+    private Servo Servo2 = null;
 
     @Override
     public void runOpMode(){
 
-        Servo = hardwareMap.get(Servo.class, "servo1");
+        Servo1 = hardwareMap.get(Servo.class, "servo1");
+        Servo2 = hardwareMap.get(Servo.class, "servo2");
+
+        Servo1.setPosition(0);
+        Servo2.setPosition(0);
+
         telemetry.addData("Status", "Initialized");
         telemetry.update();
-        Servo.setPosition(0);
 
         waitForStart();
 
-        Servo.setPosition(1);
+        Servo1.setPosition(1);
+        Servo2.setPosition(1);
 
         sleep(1000);
     }
