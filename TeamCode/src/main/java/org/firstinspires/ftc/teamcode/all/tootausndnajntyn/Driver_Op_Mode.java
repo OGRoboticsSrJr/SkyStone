@@ -21,6 +21,7 @@ public class Driver_Op_Mode extends OpMode {
     private DcMotor motorightback = null;
     private DcMotor motorightfront = null;
 
+
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
@@ -29,11 +30,6 @@ public class Driver_Op_Mode extends OpMode {
         motoleftfront = hardwareMap.get(DcMotor.class, "motoleftfront");
         motorightback = hardwareMap.get(DcMotor.class, "motorightback");
         motorightfront = hardwareMap.get(DcMotor.class, "motorightfront");
-
-        motoleftback.setDirection(DcMotor.Direction.REVERSE);
-        motoleftfront.setDirection(DcMotor.Direction.REVERSE);
-        motorightback.setDirection(DcMotor.Direction.REVERSE);
-        motorightfront.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("status", "Initialized");
         telemetry.update();
@@ -52,13 +48,22 @@ public class Driver_Op_Mode extends OpMode {
         //drive2 = rightback + leftfront
         float drive2 = gamepad1.left_stick_x;
 
-        motorightfront.setPower(-drive1);
-        motoleftback.setPower(drive1);
-        motorightback.setPower(drive2);
-        motoleftfront.setPower(-drive2);
+        float turn = gamepad1.right_trigger - gamepad1.left_trigger;
+        
+        if (turn != 0) {
+            motorightfront.setPower(turn);
+            motoleftback.setPower(turn);
+            motorightback.setPower(turn);
+            motoleftfront.setPower(turn);
+        } else {
+            motorightfront.setPower(drive1);
+            motoleftback.setPower(-drive1);
+            motorightback.setPower(-drive2);
+            motoleftfront.setPower(drive2);
+        }
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1, drive2);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1, drive2, turn);
     }
     @Override
     public void stop(){
