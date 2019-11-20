@@ -49,7 +49,7 @@ public class Driver_Op_Mode extends OpMode {
         float drive2 = gamepad1.left_stick_x;
 
         float turn = gamepad1.right_trigger - gamepad1.left_trigger;
-        
+
         if (turn != 0) {
             motorightfront.setPower(turn);
             motoleftback.setPower(turn);
