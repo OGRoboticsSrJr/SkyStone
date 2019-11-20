@@ -46,24 +46,19 @@ public class Driver_Op_Mode extends OpMode {
 
     @Override
     public void loop(){
-         double drive1Power;
-         double drive2Power;
 
-         //drive1 = rightfront + leftback
+        //drive1 = rightfront + leftback
         float drive1 = gamepad1.left_stick_y;
         //drive2 = rightback + leftfront
         float drive2 = gamepad1.left_stick_x;
 
-        drive1Power = Range.clip(drive1 + drive2, -1.0, 1.0);
-        drive2Power = Range.clip(drive1 - drive2, -1.0, 1.0);
-
-        motorightfront.setPower(drive1Power);
-        motoleftback.setPower(drive1Power);
-        motorightback.setPower(drive2Power);
-        motoleftfront.setPower(drive2Power);
+        motorightfront.setPower(-drive1);
+        motoleftback.setPower(drive1);
+        motorightback.setPower(drive2);
+        motoleftfront.setPower(-drive2);
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1Power, drive2Power);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1, drive2);
     }
     @Override
     public void stop(){
