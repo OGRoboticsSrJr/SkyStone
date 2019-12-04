@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
+@Autonomous
 //@Disabled
 public class Auto_OP_Mode extends LinearOpMode {
 
@@ -18,11 +18,10 @@ public class Auto_OP_Mode extends LinearOpMode {
     private DcMotor motorightback = null;
 
 
-
     static final double CPMR = 2240;
-    static final double reduction = 0.025;
+    static final double reduction = 1;
     static final double diameter = 3.54331;
-    static final double CPI = (CPMR*reduction)/(diameter*3.14159265363);
+    static final double CPI = (CPMR * reduction) / (diameter * 3.14159265363);
     static final double speed = -3.0;
     static final double turn = 0.5;
 
@@ -32,10 +31,10 @@ public class Auto_OP_Mode extends LinearOpMode {
     public void runOpMode() {
         coloursensor = hardwareMap.colorSensor.get("colour");
 
-        motoleftback = hardwareMap.get(DcMotor.class, "left_back");
-        motoleftfront = hardwareMap.get(DcMotor.class, "left_front");
-        motorightback = hardwareMap.get(DcMotor.class, "right_back");
-        motorightfront = hardwareMap.get(DcMotor.class, "right_front");
+        motoleftback = hardwareMap.get(DcMotor.class, "motoleftback");
+        motoleftfront = hardwareMap.get(DcMotor.class, "motoleftfront");
+        motorightback = hardwareMap.get(DcMotor.class, "motorightback");
+        motorightfront = hardwareMap.get(DcMotor.class, "motorightfront");
 
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
@@ -57,21 +56,28 @@ public class Auto_OP_Mode extends LinearOpMode {
                 motorightback.getCurrentPosition());
         telemetry.update();
 
-
         waitForStart();
 
-        motoleftfront.setPower(speed);
-        motorightback.setPower(speed);
-        motorightfront.setPower(speed);
         motoleftback.setPower(speed);
+        motorightfront.setPower(-speed);
 
+        motoleftback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorightfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
+        motoleftback.setTargetPosition(22500);
+        motorightfront.setTargetPosition(2240);
 
+        while (motorightfront.isBusy() && opModeIsActive()) {
+        }
+        while (motoleftback.isBusy() && opModeIsActive()) {
+        }
 
+        motoleftback.setPower(0);
+        motorightfront.setPower(0);
 
+        sleep(1000);
 
-
-
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
     }
-
 }

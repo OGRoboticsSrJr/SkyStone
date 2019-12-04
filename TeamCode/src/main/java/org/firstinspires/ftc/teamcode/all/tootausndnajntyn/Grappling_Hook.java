@@ -11,16 +11,13 @@ public class Grappling_Hook extends LinearOpMode{
 
     private ElapsedTime runtime = new ElapsedTime();
     private Servo Servo1 = null;
-    private Servo Servo2 = null;
 
     @Override
     public void runOpMode(){
 
         Servo1 = hardwareMap.get(Servo.class, "servo1");
-        Servo2 = hardwareMap.get(Servo.class, "servo2");
 
         Servo1.setPosition(0);
-        Servo2.setPosition(0);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -28,7 +25,6 @@ public class Grappling_Hook extends LinearOpMode{
         waitForStart();
 
         Servo1.setPosition(1);
-        Servo2.setPosition(1);
 
         sleep(1000);
     }
