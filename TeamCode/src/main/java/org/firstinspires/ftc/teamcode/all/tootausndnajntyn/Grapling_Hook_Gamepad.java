@@ -33,7 +33,7 @@ public class Grapling_Hook_Gamepad extends OpMode {
         boolean left = gamepad1.y;
 
         if (right==true){
-            servo1.setPosition(1);
+            servo1.setPosition(0.666666666);
         }
         if (left==true){
             servo1.setPosition(0);

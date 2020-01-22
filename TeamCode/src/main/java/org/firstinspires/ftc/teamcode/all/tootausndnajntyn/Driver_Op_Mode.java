@@ -21,6 +21,7 @@ public class Driver_Op_Mode extends OpMode {
     private DcMotor motorightback = null;
     private DcMotor motorightfront = null;
     private Servo servo1 = null;
+    private Servo servo2 = null;
 
 
     @Override
@@ -32,6 +33,7 @@ public class Driver_Op_Mode extends OpMode {
         motorightback = hardwareMap.get(DcMotor.class, "motorightback");
         motorightfront = hardwareMap.get(DcMotor.class, "motorightfront");
         servo1 = hardwareMap.get(Servo.class, "servo1");
+        servo2 = hardwareMap.get(Servo.class, "servo2")
 
         servo1.setPosition(0);
 
@@ -51,10 +53,14 @@ public class Driver_Op_Mode extends OpMode {
         float drive1 = gamepad1.left_stick_y;
         //drive2 = rightback + leftfront
         float drive2 = gamepad1.left_stick_x;
-        //servo_right
-        boolean right = gamepad1.x;
-        //servo left
-        boolean left = gamepad1.y;
+        //servo1_right
+        boolean right1 = gamepad1.x;
+        //servo1_left
+        boolean left1 = gamepad1.y;
+        //servo2_right
+        boolean right2 = gamepad1.a
+        //servo2_left
+        boolean left2 = gamepad1.b
 
         float turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
@@ -70,13 +76,20 @@ public class Driver_Op_Mode extends OpMode {
             motoleftfront.setPower(drive2);
         }
 
-        if (right==true){
-            servo1.setPosition(1);
+        if (right1==true){
+            servo1.setPosition(0.666666666666666);
         }
-        if (left==true){
+        if (left1==true){
             servo1.setPosition(0);
         }
 
+        if (right2==true){
+            servo2.setPosition(0.333333333333333);
+        }
+        if (left2==true){
+            servo2.setPosition(0);
+        }
+        
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1, drive2, turn);
     }
