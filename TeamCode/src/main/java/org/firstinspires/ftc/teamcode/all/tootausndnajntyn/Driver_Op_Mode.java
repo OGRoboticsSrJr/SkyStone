@@ -33,9 +33,10 @@ public class Driver_Op_Mode extends OpMode {
         motorightback = hardwareMap.get(DcMotor.class, "motorightback");
         motorightfront = hardwareMap.get(DcMotor.class, "motorightfront");
         servo1 = hardwareMap.get(Servo.class, "servo1");
-        servo2 = hardwareMap.get(Servo.class, "servo2")
+        servo2 = hardwareMap.get(Servo.class, "servo2");
 
         servo1.setPosition(0);
+        servo2.setPosition(0);
 
         telemetry.addData("status", "Initialized");
         telemetry.update();
@@ -89,7 +90,7 @@ public class Driver_Op_Mode extends OpMode {
         if (left2==true){
             servo2.setPosition(0);
         }
-        
+
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", drive1, drive2, turn);
     }
