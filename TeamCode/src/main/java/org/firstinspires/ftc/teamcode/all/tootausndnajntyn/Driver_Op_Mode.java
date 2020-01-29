@@ -59,9 +59,9 @@ public class Driver_Op_Mode extends OpMode {
         //servo1_left
         boolean left1 = gamepad1.y;
         //servo2_right
-        boolean right2 = gamepad1.a
+        boolean right2 = gamepad1.a;
         //servo2_left
-        boolean left2 = gamepad1.b
+        boolean left2 = gamepad1.b;
 
         float turn = gamepad1.right_trigger - gamepad1.left_trigger;
 
