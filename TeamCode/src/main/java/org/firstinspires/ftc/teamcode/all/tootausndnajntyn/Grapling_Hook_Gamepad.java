@@ -10,16 +10,16 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 public class Grapling_Hook_Gamepad extends OpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
-    private Servo Servo1 = null;
+        private Servo servo1 = null;
 
     @Override
     public void init(){
 
-        Servo1 = hardwareMap.get(Servo.class, "servo1");
+        servo1 = hardwareMap.get(Servo.class, "servo1");
 
         runtime.reset();
 
-        Servo1.setPosition(0);
+        servo1.setPosition(0);
     }
     @Override
     public void init_loop(){}
@@ -33,10 +33,10 @@ public class Grapling_Hook_Gamepad extends OpMode {
         boolean left = gamepad1.y;
 
         if (right==true){
-            Servo1.setPosition(1);
+            servo1.setPosition(1);
         }
         if (left==true){
-            Servo1.setPosition(0);
+            servo1.setPosition(0);
         }
     }
     @Override
