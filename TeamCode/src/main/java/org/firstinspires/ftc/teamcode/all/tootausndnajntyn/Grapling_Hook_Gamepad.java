@@ -19,7 +19,7 @@ public class Grapling_Hook_Gamepad extends OpMode {
 
         runtime.reset();
 
-        servo1.setPosition(0);
+        servo1.setPosition(1);
     }
     @Override
     public void init_loop(){}
@@ -29,6 +29,8 @@ public class Grapling_Hook_Gamepad extends OpMode {
 
     @Override
     public void loop(){
+        servo1.scaleRange(0.82,1);
+
         boolean right = gamepad1.x;
         boolean left = gamepad1.y;
 
